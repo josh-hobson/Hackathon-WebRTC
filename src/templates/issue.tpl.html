@@ -1,0 +1,125 @@
+<div class="instance">
+  <div class="col-xs-6 ">
+    <div class="info">
+      <div class="row">
+        <a ui-sref="table" ui-sref-opts="params">
+          <i class="glyphicon glyphicon-chevron-left"></i>Back to Results
+        </a>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 data-label"><p>Customer</p></div>
+        <div class="col-xs-6 data">{{branding.CustomerName}}</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 data-label"><p>Type</p></div>
+        <div class="col-xs-6 data">{{branding.BrandingType}}</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 data-label"><p>Instance ID</p></div>
+        <div class="col-xs-6 data">{{branding.BrandingID}}</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 data-label"><p>Order No</p></div>
+        <div class="col-xs-6 data">{{branding.OrderNo || 'Manually Created'}}</div>
+      </div>
+
+      <div ng-if="!branding.Deleted && branding.Hidden" class="alert alert-warning">
+        <b>This branding is hidden.</b>
+      </div>
+      <div ng-if="branding.Deleted" class="alert alert-danger">
+        <b>This branding is deleted.</b>
+      </div>
+    </div>
+    <div class="notes">
+      <div class="note-input">
+        <h3>Notes</h3>
+        <div class="form-group">
+          <label class="control-label col-sm-4">New Note</label>
+          <div class="col-sm-6">
+            <textarea ng-model="newNote" class="form-control"></textarea>
+          </div>
+          <div class="col-sm-2">
+            <button class="btn btn-primary btn-block" ng-click="addNote()">Save</button>
+          </div>
+        </div>
+      </div>
+      <div class="note-container">
+        <div ng-repeat="note in notes | reverse" class="row">
+          <div class="col-xs-4 data-label">{{note.Date | date: 'medium'}} <b>{{note.Brander}}</b></div>
+          <div class="col-xs-8 data">{{note.Note}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-6">
+    <div class="contact">
+      <div class="row">
+        <h3>Details</h3>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 data-label"><p>Last Modified Date</p></div>
+        <div class="col-xs-6 data">{{branding.LastModifiedDate | date: 'medium'}}</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 data-label"><p>Last Modified By</p></div>
+        <div class="col-xs-6 data">{{branding.LastModifiedUser}}</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+          <button class="btn btn-primary btn-block" ng-click="updateToNow()">Update to now</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 data-label"><p>Next Action</p></div>
+        <div class="col-xs-6 data">{{branding.Stage}}</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 data-label"><p>Next Action With</p></div>
+        <div class="col-xs-6 data">{{branding.Owner}}</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 data-label"><p>Primary Contact</p></div>
+        <div class="col-xs-6 data">{{branding.PrimaryContact}}</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 data-label"><p>Interested Parties</p></div>
+        <div class="col-xs-6 data">{{branding.InterestedParties}}</div>
+      </div>
+      <div class="row"></div>
+      <div class="row">
+        <h3>Editable Details <button class="btn btn-primary btn-sm" ng-click="updateInfo()">Update</button></h3>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 data-label"><p>Internal Owner</p></div>
+        <div class="col-xs-6 data">
+          <select ui-select2 ng-model="branding.InternalOwnerID">
+            <option ng-repeat="brander in branders" value="{{brander.BranderID}}">
+              {{brander.Name}}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 data-label"><p>Unbranding Delivered</p></div>
+        <div class="col-xs-6 data">
+          <input type="checkbox" ng-model="branding.UnbrandingDelivered">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 data-label"><p>Issue No</p></div>
+        <div class="col-xs-6 data">
+          <div click-to-edit="branding.IssueNo"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 data-label"><p>Delivered Version</p></div>
+        <div class="col-xs-6 data">
+          <div click-to-edit="branding.DeliveredVersion"></div>
+        </div>
+      </div>
+    </div>
+    <div class="details">
+
+    </div>
+  </div>
+</div>

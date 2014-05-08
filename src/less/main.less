@@ -1,0 +1,280 @@
+/**
+ * This is the main application stylesheet. It should include or import all
+ * stylesheets used throughout the application as this is the only stylesheet in
+ * the Grunt configuration that is automatically processed.
+ */
+
+
+/**
+ * First, we include the Twitter Bootstrap LESS files. Only the ones used in the
+ * project should be imported as the rest are just wasting space.
+ */
+
+@import '../../vendor/bootstrap/less/bootstrap.less';
+@import '../../vendor/ng-table/ng-table.less';
+@import 'select2.less';
+
+/**
+ * This is our main variables file. It in turn imports the `variables` file from
+ * Twitter Bootstrap. We must include it last so we can overwrite any variable
+ * definitions in our imported stylesheets.
+ */
+
+@import 'variables.less';
+
+html, body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.full-page {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+.page-content {
+  position: absolute;
+  left:0;
+  width:100%;
+  top: 51px;
+  bottom: 0px;
+}
+
+.page-content.ng-enter,
+.page-content.ng-leave {
+  transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+}
+
+.page-content.issue.ng-enter {
+  left: 100%;
+}
+.page-content.issue.ng-enter.ng-enter-active {
+  left: 0;
+}
+
+.page-content.issue.ng-leave {
+  left: 0;
+}
+.page-content.issue.ng-leave.ng-leave-active {
+  left: 100%;
+}
+
+.page-content.table.ng-enter {
+  left: -100%;
+}
+.page-content.table.ng-enter.ng-enter-active {
+  left: 0;
+}
+
+.page-content.table.ng-leave {
+  left: 0;
+}
+.page-content.table.ng-leave.ng-leave-active {
+  left: -100%;
+}
+
+.sql-queries {
+  padding: 15px 0;
+
+  .field-select {
+    width: 100%;
+    height:100px;
+    max-height:100px;
+
+    .select2-choices {
+      height:100% !important;
+      overflow-y: auto;
+    }
+  }
+  textarea {
+    height: 100px;
+    resize: none;
+  }
+
+  .btn {
+    height: 100px;
+  }
+}
+table {
+  tr {
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &.priority1 {
+      background-color: #f2dede;
+      color: #a94442;
+      td {
+        border-color: #a94442;
+      }
+    }
+    &.priority1:hover, &.priority1 td:hover {
+      background-color: darken(#f2dede, 5%);
+    }
+
+    &.priority2 {
+      background-color: #FCECD7;
+      color: #C97200;
+      td {
+        border-color: #C97200;
+      }
+    }
+    &.priority2:hover, &.priority2 td:hover {
+      background-color: darken(#FCECD7, 5%);
+    }
+
+    &.priority3 {
+      background-color: #fcf8e3;
+      color: #8a6d3b;
+      td {
+        border-color: #8a6d3b;
+      }
+    }
+    &.priority3:hover, &.priority3 td:hover {
+      background-color: darken(#fcf8e3, 5%);
+    }
+
+    &.normal {
+      background-color: #dff0d8;
+      color: #3c763d;
+      td {
+        border-color: #3c763d;
+      }
+    }
+
+    &.normal:hover, &.normal td:hover {
+      background-color: darken(#dff0d8, 5%);
+    }
+  }
+}
+
+.instance {
+  height: 100%;
+  p {
+    margin: 0;
+  }
+  
+  .col-xs-6 {
+    height: 100%;
+    padding: 0;
+  }
+  .info {
+    position: absolute;
+    width: 100%;
+    top:0;
+    height:230px;
+    padding: 15px;
+
+    .row {
+      padding: 5px 15px;
+    }
+
+    .data-label {
+      font-size: 16px;
+      font-weight: bold;
+      text-align: right;
+      padding: 0 5px;
+    }
+
+    .data {
+      font-size: 16px;
+      padding: 0 5px;
+    }
+  }
+
+  .notes {
+    position: absolute;
+    width: 100%;
+    top: 230px;
+    bottom: 0px;
+
+    .note-container {
+      position: absolute;
+      top: 130px;
+      bottom: 0;
+      overflow: auto;
+      width: 100%;
+
+      border: 1px solid #EEE;
+      box-sizing: border-box;
+
+      p {
+        margin: 0;
+      }
+
+      .row {
+        margin: 0;
+        padding: 5px 0;
+        border-top: 1px solid #EEE;
+      }
+
+      .data-label {
+        font-size: 13px;
+        text-align: right;
+        padding: 0 10px;
+      }
+
+      .data {
+        font-size: 13px;
+        padding: 0 5px;
+      }
+    }
+    .note-input {
+      position: absolute;
+      height: 130px;
+      top: 0px;
+      width: 100%;
+      padding: 10px 0;
+
+      h3 {
+        padding-left: 10px;
+      }
+
+      textarea {
+        resize: none;
+        height: 50px;
+      }
+
+      .control-label {
+        text-align: right;
+      }
+
+      .col-sm-7 {
+        padding: 0;
+      }
+
+      .btn {
+        height: 50px;
+      }
+    }
+  }
+
+  .contact {
+    padding: 15px;
+
+    h3 {
+      margin-top: 0px;
+    }
+
+    .row {
+      padding: 5px 15px;
+    }
+
+    .data-label {
+      font-size: 16px;
+      font-weight: bold;
+      text-align: right;
+      padding: 0 5px;
+    }
+
+    .data {
+      font-size: 16px;
+      padding: 0 5px;
+    }
+  }
+}

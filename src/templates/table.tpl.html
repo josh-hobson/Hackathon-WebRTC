@@ -1,0 +1,100 @@
+<div class="sql-queries">
+  <div class="col-xs-4 form-horizontal">
+    <div class="form-group">
+      <label class="control-label col-sm-3">Fields</label>
+      <div class="col-sm-9">
+        <select ui-select2="fieldsSelect2" multiple ng-model="fields" class="field-select">
+          <option ng-repeat="field in allFields" value="{{field}}">
+            {{field}}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-3 form-horizontal">
+    <div class="form-group">
+      <label class="control-label col-sm-3">Query</label>
+      <div class="col-sm-9">
+        <textarea ng-model="query" class="form-control"></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-3 form-horizontal">
+    <div class="form-group">
+      <label class="control-label col-sm-3">Sort</label>
+      <div class="col-sm-9">
+        <textarea ng-model="sort" class="form-control"></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-2">
+    <div class="from-group">
+      <button ng-click="getBrandings()" class="btn btn-lg btn-primary btn-block">
+        Update
+      </button>
+    </div>
+  </div>
+</div>
+<table ng-table="tableParams" class="table">
+  <tr ng-repeat="branding in $data"
+      ng-click="viewBranding(branding)"
+      ng-class="getClass(branding)">
+    <td ng-show="columnVis('CustomerName')" sortable="'CustomerName'" data-title="'Customer Name'">
+      {{branding.CustomerName}}
+    </td>
+    <td ng-show="columnVis('CustomerID')" sortable="'CustomerID'" data-title="'Customer ID'">
+      {{branding.CustomerID}}
+    </td>
+    <td ng-show="columnVis('BrandingID')" sortable="'BrandingID'" data-title="'ID'">
+      {{branding.BrandingID}}
+    </td>
+    <td ng-show="columnVis('BrandingType')" sortable="'BrandingType'" data-title="'Branding Type'">
+      {{branding.BrandingType}}
+    </td>
+    <td ng-show="columnVis('OrderNo')" sortable="'OrderNo'" data-title="'Order No'">
+      {{branding.OrderNo}}
+    </td>
+    <td ng-show="columnVis('ManualCreation')" sortable="'ManualCreation'" data-title="'Manual Creation'">
+      {{branding.ManualCreation}}
+    </td>
+    <td ng-show="columnVis('Stage')" sortable="'Stage'" data-title="'Stage'">
+      {{branding.Stage}}
+    </td>
+    <td ng-show="columnVis('StageID')" sortable="'StageID'" data-title="'StageID'">
+      {{branding.StageID}}
+    </td>
+    <td ng-show="columnVis('NextActionWith')" sortable="'NextActionWith'" data-title="'Next Action With'">
+      {{branding.NextActionWith}}
+    </td>
+    <td ng-show="columnVis('PrimaryContact')" sortable="'PrimaryContact'" data-title="'Primary Contact'">
+      {{branding.PrimaryContact}}
+    </td>
+    <td ng-show="columnVis('InterestedParties')" sortable="'InterestedParties'" data-title="'Interested Parties'">
+      {{branding.InterestedParties}}
+    </td>
+    <td ng-show="columnVis('FriendlyName')" sortable="'FriendlyName'" data-title="'Friendly Name'">
+      {{branding.FriendlyName}}
+    </td>
+    <td ng-show="columnVis('LastModifiedDate')" sortable="'LastModifiedDate'" data-title="'Last Modified Date'">
+      {{branding.LastModifiedDate | date: 'medium'}}
+    </td>
+    <td ng-show="columnVis('LastModifiedUser')" sortable="'LastModifiedUser'" data-title="'Last Modified User'">
+      {{branding.LastModifiedUser}}
+    </td>
+    <td ng-show="columnVis('Hidden')" sortable="'Hidden'" data-title="'Hidden'">
+      {{branding.Hidden}}
+    </td>
+    <td ng-show="columnVis('InternalOwner')" sortable="'InternalOwner'" data-title="'Internal Owner'">
+      {{branding.InternalOwner}}
+    </td>
+    <td ng-show="columnVis('UnbrandingDelivered')" sortable="'UnbrandingDelivered'" data-title="'Unbranding Delivered'">
+      {{branding.UnbrandingDelivered}}
+    </td>
+    <td ng-show="columnVis('IssueNo')" sortable="'IssueNo'" data-title="'Issue No'">
+      {{branding.IssueNo}}
+    </td>
+    <td ng-show="columnVis('DeliveredVersion')" sortable="'DeliveredVersion'" data-title="'Delivered Version'">
+      {{branding.DeliveredVersion}}
+    </td>
+  </tr>
+</table>

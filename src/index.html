@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="tracker" ng-controller="TrackerCtrl">
+  <head>
+    <title>Branding Tracker</title>
+
+
+    <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
+    <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
+
+    <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
+    <script type="text/javascript" src="<%= file %>"></script><% }); %>
+
+  </head>
+  <body>
+    <div class="full-page">
+      <div class="navbar navbar-inverse navbar-static-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <div class="navbar-brand">Branding Tracker</div>
+            <form class="navbar-form navbar-left" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" ng-model="searchID" placeholder="Instance #">
+              </div>
+              <button type="submit" ng-click="goToBranding()" class="btn btn-default">Go</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div ng-class="state()" class="page-content" ui-view="main">
+      </div>
+    </div>
+  </body>
+</html>
